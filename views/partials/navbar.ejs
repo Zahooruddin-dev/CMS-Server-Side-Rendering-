@@ -1,0 +1,19 @@
+<nav class="navbar">
+    <div class="container">
+        <div class="nav-brand">
+            <a href="/">CMS Platform</a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="/">Home</a></li>
+            <% if (typeof user !== 'undefined' && user) { %>
+                <li><a href="/admin/dashboard">Dashboard</a></li>
+                <li><a href="/admin/posts">Posts</a></li>
+                <li><a href="/admin/categories">Categories</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+            <% } else { %>
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/auth/register">Register</a></li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
