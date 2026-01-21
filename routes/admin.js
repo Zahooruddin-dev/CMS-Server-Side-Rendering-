@@ -12,6 +12,7 @@ router.get('/dashboard', async (req, res) => {
         const posts = await Post.findAll(5);
         res.render('admin/dashboard', { title: 'Dashboard', posts, user: req.user, messages: req.flash() });
     } catch (error) {
+        console.error('Dashboard error:', error);
         req.flash('error', 'Error loading dashboard');
         res.redirect('/');
     }
@@ -22,6 +23,7 @@ router.get('/posts', async (req, res) => {
         const posts = await Post.findAll(50);
         res.render('admin/posts', { title: 'Manage Posts', posts, user: req.user, messages: req.flash() });
     } catch (error) {
+        console.error('Posts error:', error);
         req.flash('error', 'Error loading posts');
         res.redirect('/admin/dashboard');
     }
@@ -40,6 +42,7 @@ router.post('/posts/create', async (req, res) => {
         req.flash('success', 'Post created successfully');
         res.redirect('/admin/posts');
     } catch (error) {
+        console.error('Create post error:', error);
         req.flash('error', 'Error creating post');
         res.redirect('/admin/posts/new');
     }
@@ -50,6 +53,7 @@ router.get('/posts/edit/:id', async (req, res) => {
         const post = await Post.findById(req.params.id);
         res.render('admin/post-form', { title: 'Edit Post', post, user: req.user, messages: req.flash() });
     } catch (error) {
+        console.error('Edit post error:', error);
         req.flash('error', 'Error loading post');
         res.redirect('/admin/posts');
     }
@@ -64,6 +68,7 @@ router.post('/posts/update/:id', async (req, res) => {
         req.flash('success', 'Post updated successfully');
         res.redirect('/admin/posts');
     } catch (error) {
+        console.error('Update post error:', error);
         req.flash('error', 'Error updating post');
         res.redirect('/admin/posts');
     }
@@ -75,6 +80,7 @@ router.post('/posts/delete/:id', async (req, res) => {
         req.flash('success', 'Post deleted successfully');
         res.redirect('/admin/posts');
     } catch (error) {
+        console.error('Delete post error:', error);
         req.flash('error', 'Error deleting post');
         res.redirect('/admin/posts');
     }
@@ -85,6 +91,7 @@ router.get('/categories', async (req, res) => {
         const categories = await Category.findAll();
         res.render('admin/categories', { title: 'Categories', categories, user: req.user, messages: req.flash() });
     } catch (error) {
+        console.error('Categories error:', error);
         req.flash('error', 'Error loading categories');
         res.redirect('/admin/dashboard');
     }
@@ -99,6 +106,7 @@ router.post('/categories/create', async (req, res) => {
         req.flash('success', 'Category created successfully');
         res.redirect('/admin/categories');
     } catch (error) {
+        console.error('Create category error:', error);
         req.flash('error', 'Error creating category');
         res.redirect('/admin/categories');
     }
@@ -110,6 +118,7 @@ router.post('/categories/delete/:id', async (req, res) => {
         req.flash('success', 'Category deleted successfully');
         res.redirect('/admin/categories');
     } catch (error) {
+        console.error('Delete category error:', error);
         req.flash('error', 'Error deleting category');
         res.redirect('/admin/categories');
     }
