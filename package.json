@@ -1,7 +1,7 @@
 {
   "name": "cms-project",
   "version": "1.0.0",
-  "description": "Content Management System",
+  "description": "Content Management System with Node.js, Express, EJS, and PostgreSQL",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,23 +10,25 @@
   "keywords": [
     "cms",
     "express",
-    "postgresql"
+    "postgresql",
+    "ejs",
+    "jwt"
   ],
-  "author": "",
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "bcryptjs": "^3.0.3",
+    "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.7",
-    "dotenv": "^17.2.3",
-    "ejs": "^4.0.1",
-    "express": "^5.2.1",
-    "express-session": "^1.18.2",
-    "express-validator": "^7.3.1",
-    "jsonwebtoken": "^9.0.3",
-    "pg": "^8.17.2"
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.12.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.11"
+    "nodemon": "^3.1.4"
   }
 }
