@@ -1,0 +1,36 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <h1>Categories</h1>
+    
+    <% if (messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+    <% if (messages.error) { %>
+        <div class="alert alert-error"><%= messages.error %></div>
+    <% } %>
+    
+    <div class="category-form-container">
+        <form action="/admin/categories/create" method="POST" class="category-form">
+            <div class="form-group-inline">
+                <input type="text" name="name" placeholder="Category name" required>
+                <button type="submit" class="btn btn-primary">Add Category</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="categories-grid">
+        <% categories.forEach(category => { %>
+            <div class="category-card">
+                <h3><%= category.name %></h3>
+                <p class="category-slug">/category/<%= category.slug %></p>
+                <form action="/admin/categories/delete/<%= category.id %>" method="POST">
+                    <button type="submit" class="btn btn-small btn-danger" onclick="return confirm('Delete this category?')">Delete</button>
+                </form>
+            </div>
+        <% }) %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
