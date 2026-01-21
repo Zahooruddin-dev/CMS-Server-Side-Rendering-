@@ -42,7 +42,7 @@ Before running this project, make sure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/zahooruddin-dev/cms-server-side-rendering.git
+git clone https://github.com/Zahooruddin-dev/CMS-Server-Side-Rendering-
 cd cms-server-side-rendering
 ```
 
