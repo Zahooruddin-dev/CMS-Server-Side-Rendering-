@@ -1,0 +1,46 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container">
+    <div class="admin-header">
+        <h1>Manage Posts</h1>
+        <a href="/admin/posts/new" class="btn btn-primary">New Post</a>
+    </div>
+    
+    <% if (messages.success) { %>
+        <div class="alert alert-success"><%= messages.success %></div>
+    <% } %>
+    <% if (messages.error) { %>
+        <div class="alert alert-error"><%= messages.error %></div>
+    <% } %>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% posts.forEach(post => { %>
+                <tr>
+                    <td><%= post.title %></td>
+                    <td><%= post.author %></td>
+                    <td><span class="badge badge-<%= post.status %>"><%= post.status %></span></td>
+                    <td><%= new Date(post.created_at).toLocaleDateString() %></td>
+                    <td class="actions">
+                        <a href="/admin/posts/edit/<%= post.id %>" class="btn btn-small">Edit</a>
+                        <form action="/admin/posts/delete/<%= post.id %>" method="POST" style="display:inline;">
+                            <button type="submit" class="btn btn-small btn-danger" onclick="return confirm('Delete this post?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('../partials/footer') %>
